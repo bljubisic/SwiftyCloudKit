@@ -377,11 +377,11 @@ private func encodeToken(_ token: String) -> String {
 // MARK: Record Types
 
 public extension CKRecord {
-    public func image(_ key: String) -> UIImage? {
+    func image(_ key: String) -> UIImage? {
         return (self[key] as? CKAsset)?.image
     }
 
-    public func set(image: UIImage?, key: String)  {
+    func set(image: UIImage?, key: String)  {
         if let image = image {
             do {
                 self[key] = try CKAsset(image: image)
@@ -395,11 +395,11 @@ public extension CKRecord {
         }
     }
 
-    public func video(_ key: String) -> URL? {
+    func video(_ key: String) -> URL? {
         return (self[key] as? CKAsset)?.video(withFilename: "\(recordID.recordName)_\(key)")
     }
 
-    public func set(video: URL?, key: String) {
+    func set(video: URL?, key: String) {
         if let video = video {
             self[key] = CKAsset(fileURL: video)
         }
@@ -408,81 +408,81 @@ public extension CKRecord {
         }
     }
 
-    public func string(_ key: String) -> String? {
+    func string(_ key: String) -> String? {
         return self[key] as? String
     }
 
-    public func set(string: String?, key: String) {
+    func set(string: String?, key: String) {
         if let string = string {
             self[key] = string as CKRecordValue
         }
     }
 
-    public func reference(_ key: String) -> CKRecord.Reference? {
+    func reference(_ key: String) -> CKRecord.Reference? {
         return self[key] as? CKRecord.Reference
     }
 
-    public func set(reference: CKRecord.Reference?, key: String) {
+    func set(reference: CKRecord.Reference?, key: String) {
         if let reference = reference {
             self[key] = reference as CKRecordValue
         }
     }
 
-    public func data(_ key: String) -> Data? {
+    func data(_ key: String) -> Data? {
         return self[key] as? Data
     }
 
-    public func set(data: Data?, key: String) {
+    func set(data: Data?, key: String) {
         if let data = data {
             self[key] = data as CKRecordValue
         }
     }
 
-    public func asset(_ key: String) -> CKAsset? {
+    func asset(_ key: String) -> CKAsset? {
         return self[key] as? CKAsset
     }
 
-    public func set(asset: CKAsset?, key: String) {
+    func set(asset: CKAsset?, key: String) {
         if let asset = asset {
             self[key] = asset as CKRecordValue
         }
     }
 
-    public func int(_ key: String) -> Int? {
+    func int(_ key: String) -> Int? {
         return self[key] as? Int
     }
 
-    public func set(int: Int?, key: String) {
+    func set(int: Int?, key: String) {
         if let int = int {
             self[key] = int as CKRecordValue
         }
     }
 
-    public func double(_ key: String) -> Double? {
+    func double(_ key: String) -> Double? {
         return self[key] as? Double
     }
 
-    public func set(double: Double?, key: String) {
+    func set(double: Double?, key: String) {
         if let double = double {
             self[key] = double as CKRecordValue
         }
     }
 
-    public func location(_ key: String) -> CLLocation? {
+    func location(_ key: String) -> CLLocation? {
         return self[key] as? CLLocation
     }
 
-    public func set(location: CLLocation?, key: String) {
+    func set(location: CLLocation?, key: String) {
         if let location = location {
             self[key] = location as CKRecordValue
         }
     }
 
-    public func date(_ key: String) -> Date? {
+    func date(_ key: String) -> Date? {
         return self[key] as? Date
     }
 
-    public func set(date: Date?, key: String) {
+    func set(date: Date?, key: String) {
         if let date = date {
             self[key] = date as CKRecordValue
         }
@@ -490,81 +490,81 @@ public extension CKRecord {
     
     
     // MARK: Lists
-    public func strings(_ key: String) -> [String]? {
+    func strings(_ key: String) -> [String]? {
         return self[key] as? [String]
     }
     
-    public func set(strings: [String]?, key: String) {
+    func set(strings: [String]?, key: String) {
         if let strings = strings {
             self[key] = strings as CKRecordValue
         }
     }
     
-    public func references(_ key: String) -> [CKRecord.Reference]? {
+    func references(_ key: String) -> [CKRecord.Reference]? {
         return self[key] as? [CKRecord.Reference]
     }
     
-    public func set(references: [CKRecord.Reference]?, key: String) {
+    func set(references: [CKRecord.Reference]?, key: String) {
         if let references = references {
             self[key] = references as CKRecordValue
         }
     }
     
-    public func data(_ key: String) -> [Data]? {
+    func data(_ key: String) -> [Data]? {
         return self[key] as? [Data]
     }
     
-    public func set(data: [Data]?, key: String) {
+    func set(data: [Data]?, key: String) {
         if let data = data {
             self[key] = data as CKRecordValue
         }
     }
     
-    public func assets(_ key: String) -> [CKAsset]? {
+    func assets(_ key: String) -> [CKAsset]? {
         return self[key] as? [CKAsset]
     }
     
-    public func set(assets: [CKAsset]?, key: String) {
+    func set(assets: [CKAsset]?, key: String) {
         if let assets = assets {
             self[key] = assets as CKRecordValue
         }
     }
     
-    public func ints(_ key: String) -> [Int]? {
+    func ints(_ key: String) -> [Int]? {
         return self[key] as? [Int]
     }
     
-    public func set(ints: [Int]?, key: String) {
+    func set(ints: [Int]?, key: String) {
         if let ints = ints {
             self[key] = ints as CKRecordValue
         }
     }
     
-    public func doubles(_ key: String) -> [Double]? {
+    func doubles(_ key: String) -> [Double]? {
         return self[key] as? [Double]
     }
     
-    public func set(doubles: [Double]?, key: String) {
+    func set(doubles: [Double]?, key: String) {
         if let doubles = doubles {
             self[key] = doubles as CKRecordValue
         }
     }
     
-    public func locations(_ key: String) -> [CLLocation]? {
+    func locations(_ key: String) -> [CLLocation]? {
         return self[key] as? [CLLocation]
     }
     
-    public func set(locations: [CLLocation]?, key: String) {
+    func set(locations: [CLLocation]?, key: String) {
         if let locations = locations {
             self[key] = locations as CKRecordValue
         }
     }
     
-    public func dates(_ key: String) -> [Date]? {
+    func dates(_ key: String) -> [Date]? {
         return self[key] as? [Date]
     }
     
-    public func set(dates: [Date]?, key: String) {
+    func set(dates: [Date]?, key: String) {
         if let dates = dates {
             self[key] = dates as CKRecordValue
         }
@@ -590,12 +590,12 @@ public enum ImageError: Error {
 }
 
 public extension CKAsset {
-    public convenience init(image: UIImage, fileType: ImageFileType = .JPG(compressionQuality: 0.7)) throws {
+    convenience init(image: UIImage, fileType: ImageFileType = .JPG(compressionQuality: 0.7)) throws {
         let url = try image.saveToTempLocationWithFileType(fileType: fileType)
         self.init(fileURL: url)
     }
     
-    public var image: UIImage? {
+    var image: UIImage? {
         guard let data = NSData(contentsOf: fileURL!), let image = UIImage(data: data as Data) else {
             print("Image file exists at path: \(FileManager.default.fileExists(atPath: fileURL!.path))")
 			return nil
@@ -604,7 +604,7 @@ public extension CKAsset {
         return image
     }
     
-    public func video(withFilename filename: String) -> URL? {
+    func video(withFilename filename: String) -> URL? {
         return Data.retrieveOrCreateFile(withDataURL: fileURL!, andFileName: "video_\(filename).mov", recreateIfFileExists: false)
     }
 }

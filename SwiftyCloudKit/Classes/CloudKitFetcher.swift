@@ -78,7 +78,7 @@ public extension CloudKitFetcher {
         }
     }
     
-    public func fetch(withCompletionHandler completionHandler: @escaping ([CKRecord]?, CKError?) -> Void) {
+    func fetch(withCompletionHandler completionHandler: @escaping ([CKRecord]?, CKError?) -> Void) {
         var operation: CKQueryOperation!
         var array = [CKRecord]()
         
@@ -116,7 +116,7 @@ public extension CloudKitFetcher {
             }
             
             var savedRecords = localStorageSavedRecords.load()
-			var deletedRecords = localStorageDeletedRecords.load()
+            let deletedRecords = localStorageDeletedRecords.load()
 
 			print("Fetched \(savedRecords.count) local records that ought to be uploaded to iCloud")
 			print("Fetched \(deletedRecords.count) local records that ought to be deleted in iCloud")

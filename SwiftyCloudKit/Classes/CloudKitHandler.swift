@@ -98,7 +98,7 @@ public extension CloudKitHandler {
     /**
      Will set up to retry the upload after a time interval defined by cloud kit [CKErrorRetryAfterKey](https://developer.apple.com/documentation/cloudkit/ckerrorretryafterkey). This function will effectively just wait a bit before it calls the upload function again with the same arguments.
      */
-    public func retryUploadAfter(error: CKError?, withRecords records: [CKRecord], priority: QualityOfService = .userInitiated, perRecordProgress: ((CKRecord, Double) -> Void)? = nil, andCompletionHandler completionHandler: (([CKRecord]?, Error?) -> Void)?) {
+    func retryUploadAfter(error: CKError?, withRecords records: [CKRecord], priority: QualityOfService = .userInitiated, perRecordProgress: ((CKRecord, Double) -> Void)? = nil, andCompletionHandler completionHandler: (([CKRecord]?, Error?) -> Void)?) {
         if let retryInterval = error?.userInfo[CKErrorRetryAfterKey] as? TimeInterval {
             DispatchQueue.main.async {
                 Timer.scheduledTimer(withTimeInterval: retryInterval, repeats: false) { [unowned self] (timer) in
@@ -115,7 +115,7 @@ public extension CloudKitHandler {
 		
 		if offlineSupport {
 			for record in records {
-				if let index = savedLocalRecords.index(where: { $0.recordID == record.recordID }) {
+                if let index = savedLocalRecords.firstIndex(where: { $0.recordID == record.recordID }) {
 					let localRecord = savedLocalRecords[index]
 					if localStorageSavedRecords.delete(record: localRecord) {
 						recordsToDelete.remove(at: recordsToDelete.lastIndex(where: { $0.recordID == localRecord.recordID  })!)

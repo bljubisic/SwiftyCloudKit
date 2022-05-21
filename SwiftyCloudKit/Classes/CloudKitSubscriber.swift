@@ -96,7 +96,7 @@ public extension CloudKitSubscriber {
         }
     }
 
-    public func subscribe(_ completionHandler: ((CKError?) -> Void)?) {
+    func subscribe(_ completionHandler: ((CKError?) -> Void)?) {
         database.save(subscription) { (savedSubscription, error) in
             if let completionHandler = completionHandler {
                 completionHandler(error as? CKError)
@@ -112,7 +112,7 @@ public extension CloudKitSubscriber {
         }
     }
 
-    public func unsubscribe(_ completionHandler: ((CKError?) -> Void)?) {
+    func unsubscribe(_ completionHandler: ((CKError?) -> Void)?) {
         database.delete(withSubscriptionID: subscription.subscriptionID) { (removedSubscription, error) in
             if let completionHandler = completionHandler {
                 completionHandler(error as? CKError)
